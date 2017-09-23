@@ -32,7 +32,10 @@ const reducer = () => {
 const loggerMiddleware = createLogger()
 
 const configureStore = () => {
-  const store = createStore(reducer, applyMiddleware(loggerMiddleware))
+  const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(loggerMiddleware))
+  )
   return store
 }
 
