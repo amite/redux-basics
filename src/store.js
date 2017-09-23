@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createLogger } from 'redux-logger'
+import { ADD_DEPOSIT } from './actions'
 
 const DEFAULT_DEPOSIT_AMOUNT = 2000
 const DEFAULT_EXPENSE_AMOUNT = 500
@@ -25,8 +26,19 @@ const initialState = {
   }
 }
 
-const reducer = () => {
-  return initialState
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ADD_DEPOSIT:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          currentBalance: state.data.currentBalance + action.payload
+        }
+      }
+    default:
+      return initialState
+  }
 }
 
 const loggerMiddleware = createLogger()
