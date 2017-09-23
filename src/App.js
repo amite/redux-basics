@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import store from './store'
+import configureStore from './store'
+
+const store = configureStore()
 
 console.log(store.getState())
 

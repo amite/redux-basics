@@ -1,6 +1,6 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import logger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 
 const DEFAULT_DEPOSIT_AMOUNT = 2000
 const DEFAULT_EXPENSE_AMOUNT = 500
@@ -29,6 +29,11 @@ const reducer = () => {
   return initialState
 }
 
-const store = createStore(reducer)
+const loggerMiddleware = createLogger()
 
-export default store
+const configureStore = () => {
+  const store = createStore(reducer, applyMiddleware(loggerMiddleware))
+  return store
+}
+
+export default configureStore
