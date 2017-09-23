@@ -23,15 +23,12 @@ const initialState = {
   }
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState.data, action) => {
   switch (action.type) {
     case ADD_DEPOSIT:
       return {
         ...state,
-        data: {
-          ...state.data,
-          currentBalance: state.data.currentBalance + action.payload
-        }
+        currentBalance: state.currentBalance + action.payload
       }
     default:
       return state
