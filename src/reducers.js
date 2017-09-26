@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux'
 import { ADD_DEPOSIT } from './actions'
 
 const DEFAULT_DEPOSIT_AMOUNT = 2000
